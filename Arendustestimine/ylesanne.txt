@@ -1,0 +1,143 @@
+Iseseisev töö 1
+
+Ülesanne 1.
+
+milliste parameetritega peaks meetodeid coverage1 ja coverage2 välja kutsuma,
+et saavutada lausekaetus ja otsusekaetus. Meetodite tulemusi pole vaja kontrollida
+(selleks on need void)
+
+nt. 
+Lausekaetus (coverage1):
+
+coverage1(1, 2), ..., ...
+
+Otsusekaetus (coverage1): 
+
+coverage1(1, 2), ..., ...
+
+private void coverage1(int i, int j) {
+	int k = 0;
+	if (i == 1) {
+		k = 1;
+	} else if (i == 2) {
+		k = 2;
+	} else {
+		k = 3;
+	}
+
+	for (int z = k; z < j; z++) {
+		k++;
+	}
+
+	while (k == 3) {
+		k--;
+	}
+}
+
+public void coverage2(int[] a, int x) {
+	int l, r, z;
+	if (a.length == 0) {
+		z = 1;
+	} else {
+		if (x < a[0]) {
+			z = 2;
+		} else {
+			if (x > a[a.length - 1]) {
+				z = 3;
+			} else {
+				l = 0;
+				r = a.length - 1;
+				while (l < r - 1) {
+					l++;
+				}
+			}
+		}
+	}
+}
+
+Ülesanne 2
+
+Kirjuta testidel põhinevalt klass SortedSet (sorteeritud hulk). See on kogumik,
+milles pole dublikaate. See erineb tavalisest hulgast niipalju, et meeles peetakse
+elementide sisestamise järjekorda. Jõudlusele ei ole vaja mõelda. Sisemise 
+andmestruktuurina kasutada masiivi. Hulga maksimaalne suurus võib olla 
+fikseeritud number nt. 100.
+
+Meetodid:
+
+void add(Object o) - lisab elemendi hulka (kui seda seal enne ei olnud)
+void remove(Object o) - eemaldab elemendi hulgast
+boolean contains(Object o) - ütleb, kas antud element on juba hulgas
+boolean containsAll(List list) - ütleb, kas listi kõik elemendid on hulgas
+boolean removeAll(List list) - eemaldab hulgast kõik listis olevad elemendid
+boolean retainAll(List list) - eemaldab hulgast kõik elemendid, mida listis pole
+int size() - tagastab hulga suuruse
+List asList() - tagastab hulga elemendid (sisestamise järjekorras)
+
+Ülesanne 3
+
+Kirjuta testidel põhinevalt bowlingu punktide kalkulaator.
+
+Meetodid:
+
+void hit(int i)
+int getScore()
+
+lihtsustus: arvutab ainult täis mänge (ei pea andma õiget tulemust, kui olen 
+visanud nt. ainult 3 viset)
+
+näide:
+
+Calculator c = new Calculator();
+for (int i = 0; i < 20; i++) { // 20 viset iga kord üks maha
+	c.hit(1);
+}
+assertEquals(20, c.getScore()); // selle tulemusena peab skoor olema 20
+
+Protsess:
+
+1. loo kalkulaatori klass (1. testmeetod)
+2. 20 viset, iga kord üks maha (summa 20) (2. testmeetod)
+3. 20 viset, iga kord kaks maha (summa 40) (3. testmeetod)
+4. 21 viset, iga kord viis maha (summa 150) (4. testmeetod)
+   - tuleb sisse frame mõiste
+   - refaktoreeri testid (eemalda duplakatsioon)
+5. 21 viset, iga kord 10 maha (21 on lihtsuse mõttes. Tegelikult ei saa siin 21 
+   viset. Sellega tegeleme hiljem) (5. testmeetod)
+6. tavaline mäng (6. testmeetod)
+
+So. tuleb teha vähemalt 6 testmeetodit. Kui vaja võib teha rohkem.
+
+Bowlingu skoori kalkuleerimine.
+
+Mäng koosned 10 frame-st. Esimeses üheksas frame-s on kaks viset. Viimases frame-s
+võib olla kolm viset. Lõppsumma on 10 frame-i summa. Viimases frame-is saab spare 
+puhul ühe lisaviske ja strike puhul kaks lisaviset.
+
+Frame - 2(viimases 3) viset
+Strike - esimese löögiga kõik kurikad maha
+Spare - kahe löögiga kõik kurikad maha
+näide punktitabelist: http://tralvex.com/pub/bowling/BSC.htm 
+  (notatsioon: 0-9 or x or /) 
+  |1, 2| tavaline (esimene vise üks, teine vise kaks kurikata maha)
+  |5, /| spare (esimene vise 5, teine vise ülejäänud)
+  |x,| Strike (esimene vise kõik maha. Teist viset ei saa)
+
+Punktide arvutamine: 
+  tavaline - frame-i summa (so. kahe viske summa)
+  spare - frame-i summa (10) + järgmise viske punktid
+  strike - frame-i summa (10, teist viset ei saa) + kahe järgmise viske punktid
+
+näide tavalisest mängust:
+
+01. 3, 5, 
+02. 5, 5,
+03. 2, 5,
+04. 10,
+05. 2, 8,
+06. 10,
+07. 5, 2,
+08. 7,1,
+09. 3,7,
+10. 10, 7, 3
+= 139
