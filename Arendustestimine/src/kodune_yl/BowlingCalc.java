@@ -1,5 +1,9 @@
 package kodune_yl;
 
 public class BowlingCalc {
-	System.out.print("WTF, must-valge");
+	
+	public BowlingCalc(){
+		System.out.println("sadasd");
+	}
+	
 }
