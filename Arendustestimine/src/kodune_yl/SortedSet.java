@@ -6,28 +6,28 @@ import java.util.List;
 
 public class SortedSet {
 	
-//	private int total = 0;
 	private Object[] sortedSet = new Object[100];
 	private int lastIndex = 0;
 
 	public SortedSet(){
-		
+		System.out.println("xzczxc");
 	}
 	
-	 public void add(Object o) {
+	public void add(Object o){
 		  if(!this.contains(o) && this.lastIndex < sortedSet.length) {
-		   sortedSet[lastIndex] = (Integer) o;
-		   lastIndex++;
-//		   total++;
+				sortedSet[lastIndex] = o;
+				lastIndex++;
 		  }
-		 }
+	}
+
 	
 	public void remove(Object o){
 		for(int i = 0; i < sortedSet.length; i++){
 			if(sortedSet[i] == o)
 				sortedSet[i] = null;
 		}
-		//TODO: järgmisi ühe võrra ettepoole liigutada
+
+		updateSet();
 	}
 	
 	public boolean contains(Object o){
@@ -39,8 +39,19 @@ public class SortedSet {
 	}
 	
 	public boolean containsAll(List list){
-		
-		return true;
+		int listLength = list.size();
+		int vastused = 0;
+		boolean onOlemas;
+		for(Object lo : list){
+			onOlemas = false;
+			for(Object o: sortedSet){
+				if(lo==o)
+					onOlemas = true;
+			}
+			if(onOlemas)
+				vastused++;
+		}
+		return (vastused==listLength);
 	}
 	
 	public boolean removeAll(List list){
@@ -59,6 +70,18 @@ public class SortedSet {
 	
 	public List<Object> asList(){
 		return Arrays.asList(sortedSet);
+	}
+	
+	
+	private void updateSet(){
+		Object[] tmp = new Object[100];
+		int k = 0;
+		for(int i=0;i<sortedSet.length;i++){
+			if(!sortedSet[i].equals(null))
+				tmp[k] = sortedSet[i];
+		}
+		sortedSet = tmp;
+		lastIndex = sortedSet.length - 1;
 	}
 	
 }
