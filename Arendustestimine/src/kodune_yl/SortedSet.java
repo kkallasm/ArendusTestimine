@@ -22,8 +22,8 @@ public class SortedSet {
 
 	
 	public void remove(Object o){
-		for(int i = 0; i < sortedSet.length; i++){
-			if(sortedSet[i] == o)
+		for(int i = 0; i < lastIndex; i++){
+			if(sortedSet[i].equals(o))
 				sortedSet[i] = null;
 		}
 
@@ -56,7 +56,7 @@ public class SortedSet {
 	
 	public boolean removeAll(List list){
 		for(Object lo : list){
-			for(int i=0;i<sortedSet.length;i++){
+			for(int i=0;i<lastIndex;i++){
 				if(lo.equals(sortedSet[i])){
 					sortedSet[i]=null;
 				}
@@ -68,7 +68,7 @@ public class SortedSet {
 	
 	public boolean retainAll(List list){
 		for(Object lo : list){
-			for(int i=0;i<sortedSet.length;i++){
+			for(int i=0;i<lastIndex;i++){
 				if(!lo.equals(sortedSet[i])){
 					sortedSet[i]=null;
 				}
@@ -83,19 +83,26 @@ public class SortedSet {
 	}
 	
 	public List<Object> asList(){
-		return Arrays.asList(sortedSet);
+		List<Object> list = new ArrayList<Object>();
+		for(Object o : sortedSet){
+			if(o!=null)
+				list.add(o);
+		}
+		return list;
 	}
 	
 	
 	private void updateSet(){
 		Object[] tmp = new Object[100];
 		int k = 0;
-		for(int i=0;i<sortedSet.length;i++){
-			if(!sortedSet[i].equals(null))
+		for(int i=0;i<lastIndex;i++){
+			if(sortedSet[i]!=null){
 				tmp[k] = sortedSet[i];
+				k++;
+			}
 		}
 		sortedSet = tmp;
-		lastIndex = sortedSet.length - 1;
+		lastIndex = k;
 	}
 	
 }
