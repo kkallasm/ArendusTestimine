@@ -12,7 +12,7 @@ public class BowlingCalcTests {
 	}
 	
 	@Test
-	public void Test2() {
+	public void Test2() throws Exception {
 		BowlingCalc calc = new BowlingCalc();
 		for (int i = 0; i < 20; i++) { // 20 viset iga kord üks maha
 			calc.hit(1);
@@ -21,7 +21,7 @@ public class BowlingCalcTests {
 	}
 	
 	@Test
-	public void Test3() {
+	public void Test3() throws Exception {
 		BowlingCalc calc = new BowlingCalc();
 		for (int i = 0; i < 20; i++) {
 			calc.hit(2);
@@ -30,7 +30,7 @@ public class BowlingCalcTests {
 	}
 	
 	@Test
-	public void Test4() {
+	public void Test4() throws Exception {
 		BowlingCalc calc = new BowlingCalc();
 		for (int i = 0; i < 21; i++) {
 			calc.hit(5);
@@ -39,7 +39,7 @@ public class BowlingCalcTests {
 	}
 	
 	@Test
-	public void Test5() {
+	public void Test5() throws Exception {
 		BowlingCalc calc = new BowlingCalc();
 		for (int i = 0; i < 21; i++) {
 			calc.hit(10);
@@ -48,7 +48,7 @@ public class BowlingCalcTests {
 	}
 	
 	@Test
-	public void Test6() {
+	public void Test6() throws Exception {
 		BowlingCalc calc = new BowlingCalc();
 		calc.hit(4);
 		calc.hit(5);
