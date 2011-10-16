@@ -9,8 +9,10 @@ public class BowlingCalc {
 	private boolean wasStrike = false;
 	private boolean twoLastWereStrikes = false;
 	
+	private int lastHit = -1;
+	
 	public BowlingCalc(){
-		System.out.println("sadasd");
+		System.out.println("sadasd111222333");
 	}
 
 	public void hit(int i) throws Exception {
@@ -48,9 +50,23 @@ public class BowlingCalc {
 	}
 
 	private void updateFlags(int i) {
-		if(hitCount % 2 == 1) {
-			
+		if(hitCount % 2 == 1 && lastHit + i == 10) {
+			wasSpare = true;
 		}
+		else if (i == 10 && hitCount % 2 == 0 && wasStrike) {
+			twoLastWereStrikes = true;
+		}
+		else if (i == 10 && hitCount % 2 == 0 && !wasStrike) {
+			wasSpare = false;
+			wasStrike = true;
+		}
+		else {
+			wasSpare = false;
+			wasStrike = false;
+			twoLastWereStrikes = false;
+		}
+		
+		lastHit = i;
 	}
 	
 	public Object getScore() {
