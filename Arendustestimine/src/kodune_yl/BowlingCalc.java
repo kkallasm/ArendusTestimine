@@ -10,7 +10,7 @@ public class BowlingCalc {
 	private boolean twoLastWereStrikes = false;
 	
 	public BowlingCalc(){
-		System.out.println("sadasd");
+		System.out.println("sadasd111222333");
 	}
 
 	public void hit(int i) throws Exception {
