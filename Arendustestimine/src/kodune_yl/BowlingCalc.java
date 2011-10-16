@@ -48,8 +48,9 @@ public class BowlingCalc {
 	}
 
 	private void updateFlags(int i) {
-		// TODO Auto-generated method stub
-		
+		if(hitCount % 2 == 1) {
+			
+		}
 	}
 	
 	public Object getScore() {
