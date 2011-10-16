@@ -1,57 +1,46 @@
 package kodune_yl;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class SortedSet {
 	
-	private int total = 0;
+//	private int total = 0;
 	private Object[] sortedSet = new Object[100];
-	private int lastPoint = 0;
+	private int lastIndex = 0;
 
 	public SortedSet(){
 		
 	}
 	
-	public void add(Object o){
-		if(this.contains(o)){
-			if(this.lastPoint<sortedSet.length){
-				sortedSet[lastPoint] = o;
-				lastPoint++;
-				total++;
-			}
-		}
-	}
+	 public void add(Object o) {
+		  if(!this.contains(o) && this.lastIndex < sortedSet.length) {
+		   sortedSet[lastIndex] = (Integer) o;
+		   lastIndex++;
+//		   total++;
+		  }
+		 }
 	
 	public void remove(Object o){
-		for(int i=0; i<sortedSet.length; i++){
-			if(sortedSet[i]==o)
-				sortedSet[i]=null;
+		for(int i = 0; i < sortedSet.length; i++){
+			if(sortedSet[i] == o)
+				sortedSet[i] = null;
 		}
+		//TODO: järgmisi ühe võrra ettepoole liigutada
 	}
 	
 	public boolean contains(Object o){
-		for(Object i: sortedSet){
-			if(i==o && i!=null)
+		for(Object i : sortedSet){
+			if(i != null && i.equals(o))
 				return true;						
 		}
 		return false;
 	}
 	
 	public boolean containsAll(List list){
-		int listLength = list.size();
-		int vastused = 0;
-		boolean onOlemas;
-		for(Object lo : list){
-			onOlemas = false;
-			for(Object o: sortedSet){
-				if(lo==o)
-					onOlemas = true;
-			}
-			if(onOlemas)
-				vastused++;
-		}
-		return (vastused==listLength);
+		
+		return true;
 	}
 	
 	public boolean removeAll(List list){
@@ -65,16 +54,11 @@ public class SortedSet {
 	}
 	
 	public int size(){		
-		return total;
+		return lastIndex;
 	}
 	
-	public List asList(){
-		List<Object> list = new ArrayList<Object>();
-		for(Object i: sortedSet){
-			if(i!=null)
-				list.add(i);
-		}
-		return list;
+	public List<Object> asList(){
+		return Arrays.asList(sortedSet);
 	}
 	
 }
