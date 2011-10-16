@@ -10,7 +10,7 @@ public class SortedSet {
 	private int lastIndex = 0;
 
 	public SortedSet(){
-		System.out.println("xzczxc");
+		
 	}
 	
 	public void add(Object o){
@@ -45,7 +45,7 @@ public class SortedSet {
 		for(Object lo : list){
 			onOlemas = false;
 			for(Object o: sortedSet){
-				if(lo==o)
+				if(lo.equals(o))
 					onOlemas = true;
 			}
 			if(onOlemas)
@@ -55,12 +55,26 @@ public class SortedSet {
 	}
 	
 	public boolean removeAll(List list){
-		
+		for(Object lo : list){
+			for(int i=0;i<sortedSet.length;i++){
+				if(lo.equals(sortedSet[i])){
+					sortedSet[i]=null;
+				}
+			}
+		}
+		updateSet();
 		return true;
 	}
 	
 	public boolean retainAll(List list){
-		
+		for(Object lo : list){
+			for(int i=0;i<sortedSet.length;i++){
+				if(!lo.equals(sortedSet[i])){
+					sortedSet[i]=null;
+				}
+			}
+		}
+		updateSet();
 		return true;
 	}
 	
