@@ -6,7 +6,7 @@ import java.util.List;
 public class SortedSet {
 	
 	private int total = 0;
-	private int[] sortedSet = new int[100];
+	private Object[] sortedSet = new Object[100];
 	private int lastPoint = 0;
 
 	public SortedSet(){
@@ -16,7 +16,7 @@ public class SortedSet {
 	public void add(Object o){
 		if(this.contains(o)){
 			if(this.lastPoint<sortedSet.length){
-				sortedSet[lastPoint] = (Integer)o;
+				sortedSet[lastPoint] = o;
 				lastPoint++;
 				total++;
 			}
@@ -25,22 +25,33 @@ public class SortedSet {
 	
 	public void remove(Object o){
 		for(int i=0; i<sortedSet.length; i++){
-			if(sortedSet[i]==(Integer)o)
-				sortedSet[i]=(Integer) null;
+			if(sortedSet[i]==o)
+				sortedSet[i]=null;
 		}
 	}
 	
 	public boolean contains(Object o){
-		for(Integer i: sortedSet){
-			if(i==(Integer)o && i!=null)
+		for(Object i: sortedSet){
+			if(i==o && i!=null)
 				return true;						
 		}
 		return false;
 	}
 	
 	public boolean containsAll(List list){
-		
-		return true;
+		int listLength = list.size();
+		int vastused = 0;
+		boolean onOlemas;
+		for(Object lo : list){
+			onOlemas = false;
+			for(Object o: sortedSet){
+				if(lo==o)
+					onOlemas = true;
+			}
+			if(onOlemas)
+				vastused++;
+		}
+		return (vastused==listLength);
 	}
 	
 	public boolean removeAll(List list){
@@ -58,8 +69,8 @@ public class SortedSet {
 	}
 	
 	public List asList(){
-		List<Integer> list = new ArrayList<Integer>();
-		for(Integer i: sortedSet){
+		List<Object> list = new ArrayList<Object>();
+		for(Object i: sortedSet){
 			if(i!=null)
 				list.add(i);
 		}
