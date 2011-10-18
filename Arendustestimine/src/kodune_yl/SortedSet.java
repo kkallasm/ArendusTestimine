@@ -38,7 +38,7 @@ public class SortedSet {
 		return false;
 	}
 	
-	public boolean containsAll(List list){
+	public boolean containsAll(List<Object> list){
 		int listLength = list.size();
 		int vastused = 0;
 		boolean onOlemas;
@@ -54,7 +54,7 @@ public class SortedSet {
 		return (vastused==listLength);
 	}
 	
-	public boolean removeAll(List list){
+	public boolean removeAll(List<Object> list){
 		for(Object lo : list){
 			for(int i=0;i<lastIndex;i++){
 				if(lo.equals(sortedSet[i])){
@@ -66,15 +66,17 @@ public class SortedSet {
 		return true;
 	}
 	
-	public boolean retainAll(List list){
+	public boolean retainAll(List<Object> list){
+		SortedSet tmp = new SortedSet();
 		for(Object lo : list){
 			for(int i=0;i<lastIndex;i++){
-				if(!lo.equals(sortedSet[i])){
-					sortedSet[i]=null;
+				if(lo.equals(sortedSet[i])){
+					tmp.add(sortedSet[i]);
 				}
 			}
 		}
-		updateSet();
+		
+		this.sortedSet = tmp.sortedSet;
 		return true;
 	}
 	
@@ -104,6 +106,10 @@ public class SortedSet {
 		sortedSet = tmp;
 		lastIndex = k;
 	}
+	
+//	public String toString(){
+//		return sortedSet.toString();
+//	}
 	
 }
 
