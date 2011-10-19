@@ -38,7 +38,7 @@ public class BowlingCalcTests {
 		assertEquals(150, calc.getScore());
 	}
 	
-	@Test
+	@Test(expected = Exception.class)
 	public void Test5() throws Exception {
 		BowlingCalc calc = new BowlingCalc();
 		for (int i = 0; i < 21; i++) {
@@ -57,6 +57,48 @@ public class BowlingCalcTests {
 		calc.hit(10);
 		
 		//TODO: ...
+	}
+	
+	@Test
+	public void Test7() throws Exception {
+		BowlingCalc calc = new BowlingCalc();
+		calc.hit(10);
+		calc.hit(10);
+		calc.hit(10);
+		calc.hit(10);
+		calc.hit(10);
+		calc.hit(10);
+		calc.hit(10);
+		calc.hit(10);
+		calc.hit(10);
+		calc.hit(10);
+		calc.hit(10);
+		assertEquals(300, calc.getScore());
+	}
+	
+	@Test
+	public void Test8() throws Exception {
+		BowlingCalc calc = new BowlingCalc();
+		calc.hit(3);
+		calc.hit(5);
+		calc.hit(5);
+		calc.hit(5);
+		calc.hit(2);
+		calc.hit(5);
+		calc.hit(10);
+		calc.hit(2);
+		calc.hit(8);
+		calc.hit(10);
+		calc.hit(5);
+		calc.hit(2);
+		calc.hit(7);
+		calc.hit(1);
+		calc.hit(3);
+		calc.hit(7);
+		calc.hit(10);
+		calc.hit(7);
+		calc.hit(3);
+		assertEquals(139, calc.getScore());
 	}
 	
 }
