@@ -7,51 +7,77 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class SortedSetTests {
 	
-	//TODO tükkideks teha + exception testid
+	//TODO exception testid
+	
+	SortedSet ss;
+	
+	@Before
+	public void sortedSet() throws Exception{
+		ss = new SortedSet();
+		ss.add(1);
+		ss.add(2);
+		ss.add(3);
+		ss.add("a");
+		ss.add("b");
+	}
 
+	
 	@Test
-	public void sortedSet() throws Exception {
-		SortedSet ss = new SortedSet();
-		ss.add(new Integer(5));
-		ss.add(new Integer(4));
-		ss.add(new Integer(3));
-		assertEquals(3, ss.size());
-		ss.remove(5);
-		assertEquals(2, ss.size());
-		assertArrayEquals(Arrays.asList(4, 3).toArray(), ss.asList().toArray());
-		assertEquals(true, ss.contains(4));
+	public void addRemove_test() {
 		
-		ss.add("a");
-		ss.add("s");
-		ss.add("d");
-		ss.add("a");
-		ss.add("66");
-		assertEquals(6, ss.size());
-		
-		List list = new ArrayList<Object>();
-		list.add("d");
+		assertEquals(5, ss.size());
+		ss.add(3);
+		assertEquals(5, ss.size());
+		ss.remove(2);
+		assertEquals(4, ss.size());
+		assertEquals(true, ss.contains(1));
+		assertEquals(false, ss.contains(2));
+		assertArrayEquals(Arrays.asList(1,3,"a","b").toArray(), ss.asList().toArray());			
+	}
+	
+	@Test
+	public void containsAll_test(){		
+		List<Object> list = new ArrayList<Object>();
+		list.add(1);
 		list.add("a");
 		
 		assertEquals(true, ss.containsAll(list));
 		
-		List list2 = new ArrayList<Object>();
-		list2.add("ddd");
-		list2.add("a");
-		list2.add("a");
+		list.add(9);
 		
-		System.out.println("Enne: "+Arrays.toString(ss.asList().toArray()));
+		assertEquals(false, ss.containsAll(list));	
+	}
+	
+	@Test
+	public void removeAll_test(){
+		List<Object> list = new ArrayList<Object>();
+		list.add(1);
+		list.add("a");
+		list.add("a");
 		
-		//assertEquals(false, ss.containsAll(list2));
-		//ss.removeAll(list);
+		ss.removeAll(list);
+		
+		assertEquals(3, ss.size());
+		assertArrayEquals(Arrays.asList(2,3,"b").toArray(), ss.asList().toArray());
+	}
+	
+	@Test
+	public void retainAll_test(){
+		List<Object> list = new ArrayList<Object>();
+		list.add(1);
+		list.add("a");
+		list.add("a");
+		
 		ss.retainAll(list);
 		
-		System.out.println("Pärast: "+Arrays.toString(ss.asList().toArray()));
-		//assertEquals(4, ss.size());
-		
+		assertEquals(2, ss.size());
+		assertArrayEquals(Arrays.asList(1,"a").toArray(), ss.asList().toArray());
+		//System.out.println("ss: "+Arrays.toString(ss.asList().toArray()));
 	}
 	
 }

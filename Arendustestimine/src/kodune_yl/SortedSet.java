@@ -6,15 +6,13 @@ import java.util.List;
 
 public class SortedSet {
 	
-	private Object[] sortedSet = new Object[100];
+	private final int MAXSIZE = 100;
+	private Object[] sortedSet = new Object[MAXSIZE];
 	private int lastIndex = 0;
 
-	public SortedSet(){
-		
-	}
 	
 	public void add(Object o){
-		  if(!this.contains(o) && this.lastIndex < sortedSet.length) {
+		  if(!this.contains(o) && lastIndex < MAXSIZE) {
 				sortedSet[lastIndex] = o;
 				lastIndex++;
 		  }
@@ -74,9 +72,9 @@ public class SortedSet {
 					tmp.add(sortedSet[i]);
 				}
 			}
-		}
-		
+		}		
 		this.sortedSet = tmp.sortedSet;
+		this.lastIndex = tmp.lastIndex;
 		return true;
 	}
 	
@@ -95,7 +93,7 @@ public class SortedSet {
 	
 	
 	private void updateSet(){
-		Object[] tmp = new Object[100];
+		Object[] tmp = new Object[MAXSIZE];
 		int k = 0;
 		for(int i=0;i<lastIndex;i++){
 			if(sortedSet[i]!=null){
@@ -107,12 +105,8 @@ public class SortedSet {
 		lastIndex = k;
 	}
 	
-//	public String toString(){
-//		return sortedSet.toString();
-//	}
 	
 }
-
 
 
 /*
