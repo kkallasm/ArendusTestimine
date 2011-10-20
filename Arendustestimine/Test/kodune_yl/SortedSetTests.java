@@ -12,9 +12,7 @@ import org.junit.Test;
 
 public class SortedSetTests {
 	
-	//TODO exception testid
-	
-	SortedSet ss;
+	private SortedSet ss;
 	
 	@Before
 	public void sortedSet() throws Exception{
@@ -28,8 +26,7 @@ public class SortedSetTests {
 
 	
 	@Test
-	public void addRemove_test() {
-		
+	public void addRemove_test() {	
 		assertEquals(5, ss.size());
 		ss.add(3);
 		assertEquals(5, ss.size());
@@ -77,7 +74,6 @@ public class SortedSetTests {
 		
 		assertEquals(2, ss.size());
 		assertArrayEquals(Arrays.asList(1,"a").toArray(), ss.asList().toArray());
-		//System.out.println("ss: "+Arrays.toString(ss.asList().toArray()));
 	}
 	
 }
