@@ -101,4 +101,26 @@ public class BowlingCalcTests {
 		assertEquals(139, calc.getScore());
 	}
 	
+	@Test
+	public void Test9() throws Exception {
+		BowlingCalc calc = new BowlingCalc();
+		calc.hit(10);
+		calc.hit(10);
+		calc.hit(6);
+		calc.hit(4);
+		calc.hit(10);
+		calc.hit(4);
+		calc.hit(5);
+		calc.hit(9);
+		calc.hit(0);
+		calc.hit(8);
+		calc.hit(2);
+		calc.hit(10);
+		calc.hit(10);
+		calc.hit(7);
+		calc.hit(3);
+		calc.hit(10);
+		assertEquals(190, calc.getScore());
+	}
+	
 }

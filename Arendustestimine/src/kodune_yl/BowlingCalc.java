@@ -14,7 +14,7 @@ public class BowlingCalc {
 	private int lastHit = -1;
 	
 	public BowlingCalc(){
-		System.out.println("sadasd111222333");
+		
 	}
 
 	public void hit(int i) throws Exception {
@@ -41,15 +41,15 @@ public class BowlingCalc {
 
 	private void increaseScore(int i) {
 		if(wasSpare) {
-			if(hitCount == 20) {
-				score += i;
+			if(hitCount == 20) {	//tegemist on viimase frame 3. viskega
+				score += i;			//liidame sparele juurde
 			}
 			else {
 				score += 2 * i; 
 			}			
 		}
 		else if (counter == 1 || counter == 2) {
-			if(hitCount == 20) {
+			if(hitCount >= 19) {
 				score += i;
 			}
 			else {
@@ -64,12 +64,6 @@ public class BowlingCalc {
 				score += 3 * i;
 			}			
 		}
-//		else if (afterStrike2) {
-//			score += 3 * i;
-//		}
-//		else if (afterStrike1) {
-//			score += 2 * i;
-//		}
 		else {
 			score += i;
 		}		
@@ -78,34 +72,22 @@ public class BowlingCalc {
 	private void updateFlags(int i) {
 		wasSpare = false;
 		
-		if(counter > 0)
+		if(counter > 0) {
 			counter--;
-		
-//		if(afterStrike2) {
-//			afterStrike2 = false;
-//		}
-//		else {
-//			afterStrike1 = false;
-//		}
-//		
-		if(hitCount % 2 == 1 && lastHit + i == 10) {
+		}
+
+		if(hitCount % 2 == 1 && lastHit + i == 10) {	//freimi 2. vise ja kahe viske summa on 10
 			wasSpare = true;
 		}
-//		else if (i == 10 && hitCount % 2 == 0 && (wasStrike || twoLastWereStrikes) ) {
-//			twoLastWereStrikes = true;
-//		}
-		else if (i == 10 && hitCount % 2 == 0) {
+		else if (i == 10 && hitCount % 2 == 0) {		//10 punkti ja freimi 1. vise 
 			wasSpare = false;
 
-			if(counter == 2) {
-				counter = 3;
+			if(counter == 2) {	//kui eelmine vist oli strike
+				counter = 3;	//3 tähendab, et järgmise viske eest saab 3x punktid
 			}
 			else {
-				counter += 2;
-			}
-			
-//			afterStrike1 = true;
-//			afterStrike2 = true;
+				counter += 2;	//2 tähendab, et järgmise 2 viske eest saab 2x punktid
+			}					//1 tähendab, et järgmise viske eest saab 2x punktid
 		}
 		
 		lastHit = i;
