@@ -22,8 +22,6 @@ public class BowlingCalc {
 			throw new Exception("Out of throws");
 		}
 		
-
-		
 		increaseScore(i);
 		updateFlags(i);
 		System.out.println(i + ": " + score);
@@ -49,7 +47,10 @@ public class BowlingCalc {
 			}			
 		}
 		else if (counter == 1 || counter == 2) {
-			if(hitCount >= 19) {
+			if(hitCount == 19 && lastHit != 10) {	//kui eelviimane frame visati strike, siis 2x punktid
+				score += 2 * i;
+			}
+			else if (hitCount >= 19) {				//viimase frame 2. ja 3. vise
 				score += i;
 			}
 			else {
@@ -57,8 +58,11 @@ public class BowlingCalc {
 			}			
 		}
 		else if (counter == 3) {
-			if(hitCount == 20) {
+			if(hitCount == 19) {					//viimase frame eelviimane vise
 				score += 2 * i;
+			}
+			else if (hitCount == 20) {				//viimase frame viimane vise
+				score += i;
 			}
 			else {
 				score += 3 * i;
@@ -79,10 +83,10 @@ public class BowlingCalc {
 		if(hitCount % 2 == 1 && lastHit + i == 10) {	//freimi 2. vise ja kahe viske summa on 10
 			wasSpare = true;
 		}
-		else if (i == 10 && hitCount % 2 == 0) {		//10 punkti ja freimi 1. vise 
+		else if (i == 10) {		//10 punkti
 			wasSpare = false;
 
-			if(counter == 2) {	//kui eelmine vist oli strike
+			if(lastHit == 10) {	//kui eelmine vise oli strike
 				counter = 3;	//3 tähendab, et järgmise viske eest saab 3x punktid
 			}
 			else {
