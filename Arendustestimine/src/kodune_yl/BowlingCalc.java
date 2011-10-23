@@ -56,6 +56,7 @@ public class BowlingCalc {
 		}
 		else if (counter == 3) {
 			if(hitCount == 19) {					//viimase frame eelviimane vise
+
 				score += 2 * i;
 			}
 			else if (hitCount == 20) {				//viimase frame viimane vise

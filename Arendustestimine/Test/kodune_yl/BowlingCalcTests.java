@@ -62,6 +62,7 @@ public class BowlingCalcTests {
 		calc.hit(10);
 		calc.hit(10);
 		calc.hit(10);
+		calc.hit(10);
 		assertEquals(300, calc.getScore());
 	}
 	
