@@ -6,6 +6,7 @@ import org.junit.Test;
 
 public class BowlingCalcTests {
 
+	@SuppressWarnings("unused")
 	@Test
 	public void Test1() {
 		BowlingCalc calc = new BowlingCalc();
@@ -44,19 +45,6 @@ public class BowlingCalcTests {
 		for (int i = 0; i < 21; i++) {
 			calc.hit(10);
 		}
-		//TODO
-	}
-	
-	@Test
-	public void Test6() throws Exception {
-		BowlingCalc calc = new BowlingCalc();
-		calc.hit(4);
-		calc.hit(5);
-		calc.hit(8);
-		calc.hit(2);
-		calc.hit(10);
-		
-		//TODO: ...
 	}
 	
 	@Test
@@ -103,7 +91,7 @@ public class BowlingCalcTests {
 	}
 	
 	@Test
-	public void Test9() throws Exception {
+	public void Test6() throws Exception {
 		BowlingCalc calc = new BowlingCalc();
 		calc.hit(10);
 		calc.hit(10);

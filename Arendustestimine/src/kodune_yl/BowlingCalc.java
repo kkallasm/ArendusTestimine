@@ -6,8 +6,6 @@ public class BowlingCalc {
 	private int hitCount = 0;
 	
 	private boolean wasSpare = false;
-//	private boolean afterStrike1 = false;
-//	private boolean afterStrike2 = false;
 	
 	private int counter = 0;
 	
@@ -24,7 +22,6 @@ public class BowlingCalc {
 		
 		increaseScore(i);
 		updateFlags(i);
-		System.out.println(i + ": " + score);
 		
 		if(hitCount >= 18) {	//viimane freim
 			hitCount++;
