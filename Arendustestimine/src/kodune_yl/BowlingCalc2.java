@@ -1,6 +1,6 @@
 package kodune_yl;
 
-public class BowlingCalc_tmp {
+public class BowlingCalc2 {
 	
 	private int hitCount = 0;
 	private int counter = 0;
@@ -8,7 +8,7 @@ public class BowlingCalc_tmp {
 	private boolean isFinalThrowStikeOrSpare = false;
 	private final Frame[] frames = new Frame[12]; 
 
-	public BowlingCalc_tmp(){
+	public BowlingCalc2(){
 		currentFrame = new Frame();
 	}
 	

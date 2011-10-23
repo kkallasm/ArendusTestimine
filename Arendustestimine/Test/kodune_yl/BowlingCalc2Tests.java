@@ -4,11 +4,11 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-public class BowlingCalc_tmpTest {
+public class BowlingCalc2Tests {
 
 	@Test
 	public void Test1() throws Exception {
-		BowlingCalc_tmp calc = new BowlingCalc_tmp();
+		BowlingCalc2 calc = new BowlingCalc2();
 		for (int i = 0; i < 20; i++) { // 20 viset iga kord üks maha
 			calc.hit(1);
 		}
@@ -17,7 +17,7 @@ public class BowlingCalc_tmpTest {
 	
 	@Test
 	public void Test2() throws Exception {
-		BowlingCalc_tmp calc = new BowlingCalc_tmp();
+		BowlingCalc2 calc = new BowlingCalc2();
 		for (int i = 0; i < 20; i++) {
 			calc.hit(2);
 		}
@@ -26,7 +26,7 @@ public class BowlingCalc_tmpTest {
 	
 	@Test
 	public void Test3() throws Exception {
-		BowlingCalc_tmp calc = new BowlingCalc_tmp();
+		BowlingCalc2 calc = new BowlingCalc2();
 		for (int i = 0; i < 21; i++) {
 			calc.hit(5);
 		}
@@ -35,7 +35,7 @@ public class BowlingCalc_tmpTest {
 	
 	@Test
 	public void Test4() throws Exception {
-		BowlingCalc_tmp calc = new BowlingCalc_tmp();
+		BowlingCalc2 calc = new BowlingCalc2();
 		for (int i = 0; i < 21; i++) {
 			calc.hit(10);
 		}
@@ -44,7 +44,7 @@ public class BowlingCalc_tmpTest {
 	
 	@Test
 	public void Test8() throws Exception {
-		BowlingCalc_tmp calc = new BowlingCalc_tmp();
+		BowlingCalc2 calc = new BowlingCalc2();
 		calc.hit(3);
 		calc.hit(5);
 		calc.hit(5);
@@ -69,7 +69,7 @@ public class BowlingCalc_tmpTest {
 	
 	@Test
 	 public void Test9() throws Exception {
-	  BowlingCalc_tmp calc = new BowlingCalc_tmp();
+	  BowlingCalc2 calc = new BowlingCalc2();
 	  calc.hit(10);
 	  calc.hit(10);
 	  calc.hit(6);

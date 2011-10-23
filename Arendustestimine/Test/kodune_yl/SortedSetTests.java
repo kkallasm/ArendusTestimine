@@ -4,7 +4,6 @@ import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Before;
@@ -34,7 +33,7 @@ public class SortedSetTests {
 		assertEquals(4, ss.size());
 		assertEquals(true, ss.contains(1));
 		assertEquals(false, ss.contains(2));
-		assertArrayEquals(Arrays.asList(1,3,"a","b").toArray(), ss.asList().toArray());			
+		assertArrayEquals(new Object[] { 1,3,"a","b" }, ss.asList().toArray());
 	}
 	
 	@Test
@@ -60,7 +59,7 @@ public class SortedSetTests {
 		ss.removeAll(list);
 		
 		assertEquals(3, ss.size());
-		assertArrayEquals(Arrays.asList(2,3,"b").toArray(), ss.asList().toArray());
+		assertArrayEquals(new Object[] { 2,3,"b" }, ss.asList().toArray());
 	}
 	
 	@Test
@@ -73,7 +72,7 @@ public class SortedSetTests {
 		ss.retainAll(list);
 		
 		assertEquals(2, ss.size());
-		assertArrayEquals(Arrays.asList(1,"a").toArray(), ss.asList().toArray());
+		assertArrayEquals(new Object[] { 1,"a" }, ss.asList().toArray());
 	}
 	
 }
