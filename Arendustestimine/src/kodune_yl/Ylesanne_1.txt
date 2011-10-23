@@ -6,7 +6,7 @@ et saavutada lausekaetus ja otsusekaetus. Meetodite tulemusi pole vaja kontrolli
 
 
 Lausekaetus (coverage1):
-coverage1(1, 2), coverage1(2, 3)
+coverage1(0, 2), coverage1(1, 2), coverage1(2, 3)
 
 Otsusekaetus (coverage1): 
 coverage1(1, 2), coverage1(2, 2), coverage1(3, 2)
@@ -34,10 +34,10 @@ private void coverage1(int i, int j) {
 **************************************************************************************************************
 
 Lausekaetus (coverage2):
-coverage2(new int[]{3,5}, 4)
+coverage2(new int[0], 0), coverage2(new int[]{3,5}, 2), coverage2(new int[]{3,5}, 4)
 
 Otsusekaetus (coverage2): 
-coverage2(new int[]{}, 1), coverage2(new int[]{3}, 1), coverage2(new int[]{3,2}, 4), coverage2(new int[]{3,5}, 4)
+coverage2(new int[0], 1), coverage2(new int[]{3}, 1), coverage2(new int[]{3,2}, 4), coverage2(new int[]{3,5}, 4)
 
 
 public void coverage2(int[] a, int x) {
