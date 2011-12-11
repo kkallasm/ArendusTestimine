@@ -1,0 +1,43 @@
+Tegemist on WiFi piletite ostmise süsteemiga. Pileteid on võimalik
+osta läbi kolme kanali: sms, web, txt. 1 tund maksab 10 senti.
+Klient ütleb, kui palju aega ta soovib nt. 2 tundi. Süsteem vastab
+pileti numbriga (nt. 1D7XA9) ja hinnaga (20 senti).
+
+1. Realiseerida pileti ostmine kanali "web" ja "txt" kaudu.
+   Näitena on tehtud pileti ostmine läbi "sms" kanali.
+   Txt kanal on analoogiline Web-iga.
+
+2. Lisada sõnumile juurde ka kliendi identifikaator. Praegu on
+   probleem selles, et kui sõnumid tulevad paralleelselt, ei ole teada,
+   kellele sõnumid kuuluvad.
+   Nt. moodul "ticket" vastab, et on ostetud (bought), aga samas pole teada,
+   kellele see vatus mõldud on.
+   Probleemi lahendamiseks peaks sõnumisse panema ühe välja juurde.
+   Praegu on seal kaks välja: kanal (sms) ja sõnum (buy) (nt "sms:buy").
+   Siis oleks nt. "sms:buy:123" - kanal, sõnum, kliendi nr.
+
+-- Punkti 1, 2 lahendamine täidab miinimum nõuded. Kui need punktid eriti aega
+   ei võta võiks punktid 3 ja 4 ka teha.
+
+3. Realiseerda moodul "bill", mis annab hinna vastavalt soovitud kasutuse ajale.
+   1 tund maksab 10 senti. Selleks peaks sõnumisse panema ühe
+   välja juurde.
+   Siis oleks sissetulev sõnum nt. "sms:buy:123:1h" ja väljaminev
+   "sms:bought:123:0,1eur".
+
+4. Realiseerda moodul "ticket", mis genereerib pileti numbri
+   kasutades juhuslike arvude generaatorit (random).
+   Nt.
+   Sisend: "sms:buy"
+   Väljund: "sms:bought:1D7XA9"
+
+
+
+
+
+
+
+
+
+
+
